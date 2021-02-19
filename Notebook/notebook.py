@@ -1,5 +1,6 @@
 from database.query import notebook_query
-from Note.note import Note
+from database.dominios.db import Note
+
 
 class Notebook():
     def __inti__(self, notes):
@@ -7,6 +8,6 @@ class Notebook():
 
     def new_note(self, note, session):
         query_notebook = notebook_query.NotebookQurey()
-        new_note = Note(note.memo, note.tags)
-        query_notebook.new_note(new_note)
+        new_note = Note(title=note.title, memo=note.memo, tags=note.tags)
+        query_notebook.new_note(new_note, session)
 
