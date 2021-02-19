@@ -17,7 +17,7 @@ class Note(Base):
     tags = Column(String(100), nullable=False)
 
     def __repr__(self):
-        return f"id: {self._id}, Title: {self.title}, Data: {self.cre}\n" \
+        return f"id: {self._id}, Title: {self.title}, Data: {self.creation_date}\n" \
                f"Memo: {self.memo}\n" \
                f"tags: {self.tags}"
 

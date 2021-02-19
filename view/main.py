@@ -4,14 +4,17 @@ from Note import note
 
 fabrica = fabrica_de_conexao.FabricaConexao()
 session = fabrica.create_sesson()
-notebook = notebook.Notebook()
+nt = notebook.Notebook()
 
-title = str(input(("Title: ")))
-memo = str(input(("Memo: ")))
-tags = str(input(("Tags: ")))
-new_note = note.Note(title=title, memo=memo, tags=tags)
 
-notebook.new_note(new_note, session)
+#title = str(input(("Title: ")))
+#memo = str(input(("Memo: ")))
+#tags = str(input(("Tags: ")))
+#new_note = note.Note(title=title, memo=memo, tags=tags)
+
+notes = nt.notes(session)
+for n in notes:
+    print(f"{n}")
 
 session.commit()
 session.close()
