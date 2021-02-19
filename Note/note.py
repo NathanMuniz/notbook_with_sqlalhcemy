@@ -6,7 +6,7 @@ class Note():
         self.__title = title
         self.__memo = memo
         self.__tags = tags
-        self.__create_date = current_date
+        self.__creation_date = current_date
 
     @property
     def title(self):
@@ -21,11 +21,11 @@ class Note():
         return self.__tags
 
     @property
-    def current_date(self):
-        return self.__create_date
+    def creation_date(self):
+        return self.__creation_date
 
     def show_dates(self):
-        return f"id: 1, Title: {self.__title}, Data: {self.__create_date}\n" \
+        return f"id: 1, Title: {self.__title}, Data: {self.__creation_date}\n" \
         f"Memo: {self.__memo}\n" \
         f"tags: {self.__tags}"
 

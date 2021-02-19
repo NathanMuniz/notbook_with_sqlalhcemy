@@ -8,6 +8,6 @@ class Notebook():
 
     def new_note(self, note, session):
         query_notebook = notebook_query.NotebookQurey()
-        new_note = Note(title=note.title, memo=note.memo, tags=note.tags)
+        new_note = Note(title=note.title, memo=note.memo, tags=note.tags, creation_date=note.creation_date)
         query_notebook.new_note(new_note, session)
 

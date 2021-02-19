@@ -11,7 +11,6 @@ memo = str(input(("Memo: ")))
 tags = str(input(("Tags: ")))
 new_note = note.Note(title=title, memo=memo, tags=tags)
 
-
 notebook.new_note(new_note, session)
 
 session.commit()
