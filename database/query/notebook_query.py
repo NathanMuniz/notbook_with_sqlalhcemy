@@ -11,3 +11,7 @@ class NotebookQurey():
     def notes(self, session):
         notes = session.query(Note).all()
         return notes
+
+    def id_search(self, note_id, session):
+        notes = session.query(Note).filter(Note._id == note_id).all()
+        return notes

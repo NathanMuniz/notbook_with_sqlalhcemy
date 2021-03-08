@@ -17,3 +17,8 @@ class Notebook():
         query_notebook = notebook_query.NotebookQurey()
         notes = query_notebook.notes(session)
         return notes
+
+    def search_id(self, note_id, session):
+        query_notebook = notebook_query.NotebookQurey()
+        notes = query_notebook.id_search(note_id, session)
+        return notes
