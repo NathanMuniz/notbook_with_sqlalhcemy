@@ -1,19 +1,19 @@
 from database.fabricas import fabrica_de_conexao
 from Notebook import notebook
 from Note.note import Note
+
 class Interface():
 
     def menu_principal(self):
         print(30 * "-=")
-        print("Option [1] - Show Notes")
+        print("Option [1] - Search")
         print("Option [2] - Create a new Note")
+        print("Option [3] - modify memo")
         print("Option [0] - Exit")
         print(30 * "-=")
 
-    def show_notes(self):
-        fabrica = fabrica_de_conexao.FabricaConexao()
-        session = fabrica.create_sesson()
-        all_notes = "Empty"
+
+    def all_notes(self, session):
         try:
             nt = notebook.Notebook()
             all_notes = nt.notes(session)
@@ -21,8 +21,8 @@ class Interface():
         except:
             session.rollback()
             raise
-        finally:
-            session.close()
+
+
 
     def create_note(self, tt, mm, tg):
         fabrica = fabrica_de_conexao.FabricaConexao()
@@ -40,21 +40,36 @@ class Interface():
         finally:
             session.close()
 
-    def search_id(self, id):
-        fabrica = fabrica_de_conexao.FabricaConexao()
-        session = fabrica.create_sesson()
+    def search_id(self, id, session):
 
         try:
             nb = notebook.Notebook()
             note = nb.search_id(id, session)
+            note_desejada = note
             session.commit()
-            return note
+            return note_desejada
+        except:
+            session.rollback()
+
+
+    def creat_session(self):
+        fabrica = fabrica_de_conexao.FabricaConexao()
+        session = fabrica.create_sesson()
+        return session
+
+    def modify_memo(self, note_id, memo):
+        fabrica = fabrica_de_conexao.FabricaConexao()
+        session = fabrica.create_sesson()
+        try:
+            nb = notebook.Notebook()
+            nb.modify_memo(note_id, memo, session)
+            session.commit()
+            return print("Modafyed")
         except:
             session.rollback()
             raise
         finally:
             session.close()
-
 
 
 

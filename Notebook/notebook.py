@@ -22,3 +22,7 @@ class Notebook():
         query_notebook = notebook_query.NotebookQurey()
         notes = query_notebook.id_search(note_id, session)
         return notes
+
+    def modify_memo(self, note_id, memo, session):
+        query_notebook = notebook_query.NotebookQurey()
+        query_notebook.modify_note_memo(note_id, memo, session)

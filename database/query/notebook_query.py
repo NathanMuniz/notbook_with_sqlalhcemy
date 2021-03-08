@@ -13,5 +13,9 @@ class NotebookQurey():
         return notes
 
     def id_search(self, note_id, session):
-        notes = session.query(Note).filter(Note._id == note_id).all()
+        notes = session.query(Note).filter(Note._id == note_id).first()
         return notes
+
+    def modify_note_memo(self, note_id, new_memo, session):
+        note = self.id_search(note_id, session)
+        note.memo = new_memo

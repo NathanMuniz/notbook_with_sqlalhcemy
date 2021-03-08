@@ -13,6 +13,7 @@ class FabricaConexao():
 
         Session = sessionmaker()
         Session.configure(bind=conexao)
+        Session.expire_on_commit=False
         session = Session()
 
         return session
