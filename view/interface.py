@@ -8,7 +8,8 @@ class Interface():
         print(30 * "-=")
         print("Option [1] - Search")
         print("Option [2] - Create a new Note")
-        print("Option [3] - modify memo")
+        print("Option [3] - Modify memo")
+        print("Option [4] - Modify tags")
         print("Option [0] - Exit")
         print(30 * "-=")
 
@@ -64,7 +65,21 @@ class Interface():
             nb = notebook.Notebook()
             nb.modify_memo(note_id, memo, session)
             session.commit()
-            return print("Modafyed")
+            return print(self.search_id(note_id, session))
+        except:
+            session.rollback()
+            raise
+        finally:
+            session.close()
+
+    def modify_tags(self, note_id, tags):
+        fabrica = fabrica_de_conexao.FabricaConexao()
+        session = fabrica.create_sesson()
+        try:
+            nb = notebook.Notebook()
+            nb.modify_tags(note_id, tags, session)
+            session.commit()
+            return print(self.search_id(note_id, session))
         except:
             session.rollback()
             raise

@@ -8,7 +8,7 @@ while True:
     interface.menu_principal()
     rep = int(input("Type the desired option: "))
     if rep == 1:
-        filter = str(input("filter: ")).upper()
+        filter = str(input("[all, id, tag]filter: ")).upper()
 
         # Search all
         if filter == "ALL":
@@ -32,19 +32,35 @@ while True:
             session.close()
 
         # Search Tags
+        elif filter == "TAG":
+            pass
+        else:
+            print("[ERRO] Filter not fund")
 
+    # New Note
     elif rep == 2:
         title = str(input("Title: "))
         memo = str(input("Memo: "))
         tags = str(input("Tags: "))
         notes = interface.create_note(tt=title, mm=memo, tg=tags)
 
-
-    elif rep ==4:
+    # Modify Note
+    elif rep == 3:
         id = int(input("Type the Id that you want modify memo"))
         memo = str(input("New memo: "))
+        print(30 * "-")
         interface.modify_memo(id, memo)
+        sleep(4)
 
+    # Modify Tags
+    elif rep == 4:
+        id = int(input("Type the ID that you want modify tags"))
+        tags = str(input("New Tags: "))
+        print(30 * "-")
+        interface.modify_tags(id, tags)
+        sleep(4)
+
+    # Exit
     elif rep == 0:
         break
     else:

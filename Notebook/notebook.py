@@ -26,3 +26,7 @@ class Notebook():
     def modify_memo(self, note_id, memo, session):
         query_notebook = notebook_query.NotebookQurey()
         query_notebook.modify_note_memo(note_id, memo, session)
+
+    def modify_tags(self, note_id, tags, session):
+        query_notebook = notebook_query.NotebookQurey()
+        query_notebook.modify_tags(note_id, tags, session)

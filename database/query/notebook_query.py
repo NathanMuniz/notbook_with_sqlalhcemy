@@ -19,3 +19,7 @@ class NotebookQurey():
     def modify_note_memo(self, note_id, new_memo, session):
         note = self.id_search(note_id, session)
         note.memo = new_memo
+
+    def modify_tags(self, note_id, new_tag, session):
+        note = self.id_search(note_id, session)
+        note.tags = new_tag
